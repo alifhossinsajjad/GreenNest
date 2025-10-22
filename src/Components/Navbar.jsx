@@ -84,7 +84,7 @@ const Navbar = () => {
           <button
             onClick={handleLogOut}
             to={"/auth/login"}
-            className="btn bg-green-300 font-bold text-white text-lg  gap-2"
+            className="btn bg-green-500 font-bold text-white text-lg  gap-2"
           >
             logOut
           </button>

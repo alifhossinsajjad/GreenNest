@@ -14,7 +14,7 @@ const PlantsCategory = () => {
     }, [data])
 
     return (
-        <div>
+        <div >
             {
                 plantsCategory.map(plant => <PlantCard key={plant.plantId} plant={plant}/>)
             }
