@@ -8,7 +8,7 @@
     "availableStock": 10,
     "careLevel": "Easy",
     "description": "A hardy plant that purifies indoor air and thrives in low light.",
-    "image": "https://i.postimg.cc/example1.png",
+    "image": "https://i.pinimg.com/1200x/09/17/ed/0917ed8684af417bf411452b878aba9c.jpg",
     "providerName": "UrbanGreen Studio"
   },
   {
@@ -20,7 +20,7 @@
     "availableStock": 7,
     "careLevel": "Easy",
     "description": "Glossy, tough leaves. Great for beginners.",
-    "image": "https://i.postimg.cc/example2.png",
+    "image": "https://i.pinimg.com/1200x/5a/ae/f7/5aaef7e42b8efc29602c482b2c138927.jpg",
     "providerName": "GreenCorner"
   },
   {
@@ -32,7 +32,7 @@
     "availableStock": 4,
     "careLevel": "Medium",
     "description": "Iconic split leaves — showstopper for living rooms.",
-    "image": "https://i.postimg.cc/example3.png",
+    "image": "https://i.pinimg.com/1200x/b1/16/9f/b1169f0a5f9adc3ac59e92c735392010.jpg",
     "providerName": "Leaf & Co"
   },
   {
@@ -44,7 +44,7 @@
     "availableStock": 15,
     "careLevel": "Easy",
     "description": "Beautiful variegated trails, perfect for shelves.",
-    "image": "https://i.postimg.cc/example4.png",
+    "image": "https://i.pinimg.com/736x/51/44/5d/51445d5436f4a8403bb426427b575ef5.jpg",
     "providerName": "UrbanGreen Studio"
   },
   {
@@ -56,7 +56,7 @@
     "availableStock": 2,
     "careLevel": "Hard",
     "description": "Large glossy leaves — needs bright indirect light.",
-    "image": "https://i.postimg.cc/example5.png",
+    "image": "https://media.istockphoto.com/id/527139821/photo/interior-in-classic-style-with-plant-3d-illustration.jpg?s=612x612&w=0&k=20&c=w8kgRdEqdSmg66vJFyJ2-5CwQgrwGmkyiEqif4cmsyA=",
     "providerName": "Leaf & Co"
   },
   {
@@ -68,7 +68,7 @@
     "availableStock": 9,
     "careLevel": "Medium",
     "description": "White blooms and humidity-loving plant.",
-    "image": "https://i.postimg.cc/example6.png",
+    "image": "https://media.istockphoto.com/id/1140929451/photo/evergreen-plant-spathiphyllum-white-flowers-and-green-leaves.jpg?s=612x612&w=0&k=20&c=a6uTBoZTHI2wY-IXMz_odvCs5mep8ua0uZaD8IbJ3TM=",
     "providerName": "GreenCorner"
   }
 ]

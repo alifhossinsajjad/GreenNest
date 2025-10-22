@@ -1,16 +1,18 @@
-import React from 'react';
-import Navbar from '../Components/Navbar';
 import { Outlet } from 'react-router';
-import PlantsCategory from '../Pages/PlantsCategory';
+import Navbar from '../Components/Navbar';
+import Carosul from '../Pages/carosul';
+
 
 const MianLayout = () => {
     return (
         <div className=''>
-            <Navbar/>
+            <Navbar />
             <div>
+
                 <Outlet>
-                    
+
                 </Outlet>
+
             </div>
         </div>
     );

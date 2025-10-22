@@ -1,10 +1,9 @@
 
-import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router';
-import Swiper from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import Carosul from './carosul';
 
 const Home = () => {
 
@@ -13,19 +12,10 @@ const Home = () => {
     console.log(plants);
 
 
-    const [allPlants, setAllPlants] = useState([]);
-
-    useEffect(() => {
-        setAllPlants(plants)
-    }, [plants])
-
-
-
-    
     return (
-       <div>
-
-       </div>
+        <div>
+            <Carosul plants ={plants}/>
+        </div>
     );
 };
 

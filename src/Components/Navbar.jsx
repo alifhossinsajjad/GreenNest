@@ -41,21 +41,14 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    <li><a>Item 1</a></li>
-                    <li>
-                        <details>
-                            <summary>Parent</summary>
-                            <ul className="p-2">
-                                <li><a>Submenu 1</a></li>
-                                <li><a>Submenu 2</a></li>
-                            </ul>
-                        </details>
-                    </li>
-                    <li><a>Item 3</a></li>
+                    <li><NavLink to={'/'}>Home</NavLink></li>
+                        <li><NavLink to={'/plants'}>Plants</NavLink></li>
+                        <li><NavLink to={'/myprofile'}>My Profile</NavLink></li>
                 </ul>
             </div>
             <div className="navbar-end">
                 <img className='w-15' src={`${user ? user.photoURL : <FaUser />}`} alt="" />
+                {/* <h1>{name}</h1> */}
                 {
                     user ? (<button onClick={handleLogOut} to={'/auth/login'} className='btn btn-primary px-8' >logOut</button>) :
                         (<Link to={'/auth/login'} className="btn btn-ghost font-bold

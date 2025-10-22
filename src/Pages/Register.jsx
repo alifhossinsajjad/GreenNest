@@ -4,6 +4,9 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../Provider/AuthContext';
 import { FaEyeSlash, FaRegEye } from 'react-icons/fa';
 
+
+
+
 const Register = () => {
 
     const { createUser, setUser, updateUserProfile } = use(AuthContext);
@@ -16,13 +19,7 @@ const Register = () => {
         const email = event.target.email.value
         const password = event.target.password.value
         const name = event.target.name.value;
-        // if (nameError.length < 5) {
-        //     setNameError('your name should be at least 5 characters long');
-        //     return;
-        // }
-        // else {
-        //     setNameError('');
-        // }
+      
         const photo = event.target.photo.value
         // console.log('i am register', email, password, name, photo);
 
@@ -77,6 +74,7 @@ const Register = () => {
     }
 
 
+    
     const handleShowPassord = () => {
         setShowPassword(!showPassowrd)
     }
@@ -126,6 +124,8 @@ const Register = () => {
                                 </span>
                             </div>
                             <button className="btn btn-neutral mt-4">Register</button>
+
+                            
                         </fieldset>
                     </form>
                 </div>
