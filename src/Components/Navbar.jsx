@@ -76,7 +76,7 @@ const Navbar = () => {
       <div className="navbar-end">
         <img
           className="w-15"
-          src={`${user ? user.photoURL && user.name : <FaUser />}`}
+          src={`${user ? user?.photoURL && user?.name : <FaUser />}`}
           alt=""
         />
         {/* <h1>{name}</h1> */}

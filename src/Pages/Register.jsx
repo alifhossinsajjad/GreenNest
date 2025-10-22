@@ -39,18 +39,14 @@ const Register = () => {
           .then(() => {
             setUser({ ...user, displayName: name, photoURL: photo });
             event.target.reset();
-            Navigate("/");
-            toast.success("name and photo url updated successfully");
+            toast.success("Name and photo updated successfully");
           })
           .catch((error) => {
             console.log(error);
-            // const errorCode = error.code;
-            // console.log(error.code);
-            toast.error("name or photo url not updated");
+            toast.error("Name or photo URL not updated");
           });
-
-        // setUser(result.user);
-        // event.target.reset()
+        setUser(result.user);
+        event.target.reset()
       })
       .catch((error) => {
         console.log(error);
@@ -87,10 +83,6 @@ const Register = () => {
                 className="input"
                 placeholder="Enter your name"
               />
-
-              {/* {
-                                nameError && <p className='text-red-600 mt-2'>Your name should be 5 character long</p>
-                            } */}
 
               {/* Photo */}
               <label className="label">Photo Url</label>
