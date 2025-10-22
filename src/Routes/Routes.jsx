@@ -9,6 +9,7 @@ import PlantDetails from "../Pages/PlantDetails";
 import PlantsCategory from "../Pages/PlantsCategory";
 import Register from "../Pages/Register";
 import PrivetRoutes from "../Provider/PrivetRoutes";
+import AllPlants from "../Pages/AllPlants";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,12 @@ const router = createBrowserRouter([
         path: "/auth/register",
         Component: Register,
       },
+      {
+        path:'/allplants',
+        Component: AllPlants,
+        loader:() => fetch('/Data/Plant.json'),
+        hydrateFallbackElement:<Loading/>
+      }
     ],
   },
   {
