@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router";
-import AllPlantsCard from "../Components/AllPlantsCard.jsx";
+
 import { FaArrowLeft } from "react-icons/fa";
+import AllPlantsCard from "../Components/AllPlantsCard";
 
 
 const AllPlants = () => {
