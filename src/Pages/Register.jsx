@@ -8,7 +8,7 @@ const Register = () => {
   const { createUser, setUser, updateUserProfile } = use(AuthContext);
   const [showPassowrd, setShowPassword] = useState(false);
   const Navigate = useNavigate();
-  // const [nameError, setNameError] = useState('');
+
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -46,7 +46,7 @@ const Register = () => {
             toast.error("Name or photo URL not updated");
           });
         setUser(result.user);
-        event.target.reset()
+        event.target.reset();
       })
       .catch((error) => {
         console.log(error);
@@ -67,68 +67,88 @@ const Register = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
-      <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl py-5">
-        <h2 className="font-semibold text-2xl text-center ">
-          Register your account
-        </h2>
-        <div className="card-body">
-          <form onSubmit={handleRegister}>
-            <fieldset className="fieldset">
-              {/* Name */}
-              <label className="text">Your Name</label>
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-green-50 to-green-100 p-4">
+      <div className="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden">
+        <div className="bg-green-500 text-white text-center py-6">
+          <h2 className="text-3xl font-extrabold">Register Your Account</h2>
+          <p className="text-green-100 mt-1">
+            Join us and grow your green space!
+          </p>
+        </div>
+
+        <div className="p-8">
+          <form onSubmit={handleRegister} className="space-y-5">
+
+            {/* Name */}
+            <div className="flex flex-col">
+              <label className="text-gray-700 font-medium mb-2">
+                Your Name
+              </label>
               <input
                 type="text"
                 name="name"
-                className="input"
                 placeholder="Enter your name"
+                className="px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-500 focus:outline-none shadow-sm"
               />
+            </div>
 
-              {/* Photo */}
-              <label className="label">Photo Url</label>
+            {/* Photo URL */}
+            <div className="flex flex-col">
+              <label className="text-gray-700 font-medium mb-2">
+                Photo URL
+              </label>
               <input
                 type="text"
                 name="photo"
-                className="input"
-                placeholder="Enter your url"
+                placeholder="Enter your photo URL"
+                className="px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-500 focus:outline-none shadow-sm"
               />
+            </div>
 
-              {/* emial */}
-              <label className="label">Email</label>
+            {/* Email */}
+            <div className="flex flex-col">
+              <label className="text-gray-700 font-medium mb-2">Email</label>
               <input
                 type="email"
                 name="email"
-                className="input"
-                placeholder="Email"
+                placeholder="Enter your email"
+                className="px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-500 focus:outline-none shadow-sm"
               />
+            </div>
 
-              {/* password */}
+            {/* Password */}
+            <div className="flex flex-col relative">
+              <label className="text-gray-700 font-medium mb-2">Password</label>
+              <input
+                type={showPassowrd ? "text" : "password"}
+                name="password"
+                placeholder="Enter your password"
+                className="px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-500 focus:outline-none shadow-sm"
+              />
+              <span
+                onClick={handleShowPassord}
+                className="absolute right-4 top-10 cursor-pointer text-gray-500 hover:text-gray-700 transition-all"
+              >
+                {showPassowrd ? <FaRegEye /> : <FaEyeSlash />}
+              </span>
+            </div>
 
-              <div className="relative">
-                <label className="label">Password</label>
-                <input
-                  type={showPassowrd ? "text" : "password"}
-                  name="password"
-                  className="input"
-                  placeholder="Password"
-                />
-                <span
-                  onClick={handleShowPassord}
-                  className="absolute right-8 top-8 cursor-pointer z-50"
-                >
-                  {showPassowrd ? <FaRegEye /> : <FaEyeSlash />}
-                </span>
-              </div>
-              <button className="btn btn-neutral mt-4">Register</button>
-            </fieldset>
+            <button className="w-full py-3 bg-green-500 text-white font-semibold rounded-xl shadow-lg hover:bg-green-600 transition-all duration-300">
+              Register
+            </button>
           </form>
+
+        
+          <p className="text-center mt-6 text-gray-600">
+            Already have an account?{" "}
+            <Link
+              to={"/auth/login"}
+              className="text-green-500 font-semibold hover:underline"
+            >
+              Login
+            </Link>
+          </p>
         </div>
-        <p className="text-center">
-          Already Have An Account ?{" "}
-          <Link to={"/auth/login"} className="text-secondary">
-            Login
-          </Link>
-        </p>
       </div>
     </div>
   );
