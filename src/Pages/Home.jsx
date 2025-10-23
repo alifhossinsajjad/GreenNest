@@ -2,30 +2,20 @@ import { useLoaderData } from "react-router";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import Carosul from "./carosul";
+import Carosul from "./Carosul";
 import TopRatedPlantsCard from "../Components/TopRatedPlantsCard";
 import { RiPlantFill } from "react-icons/ri";
-import React from "react";
-
-
-import { MdTipsAndUpdates } from "react-icons/md";
-import { LiaCheckCircle, LiaEnvira } from "react-icons/lia";
-
-
-
 import PlantWeekSection from "../Components/PlantWeekSection";
 import PlantCare from "../Components/PlantCare";
 import ExpartPlant from "../Components/ExpartPlant";
 import OurPlantServices from "../Components/OurPlantServices";
 import Faq from "../Components/Faq";
+
+
 const Home = () => {
   const plants = useLoaderData();
 
   const topRatedPlants = plants.filter((plant) => plant.rating > 4.6);
-
-  
-
-  
 
   return (
     <div className="space-y-16">
@@ -53,22 +43,22 @@ const Home = () => {
 
       {/* plant care Tips section */}
       <section>
-        <PlantCare/>
+        <PlantCare />
       </section>
 
       {/* expart section */}
-     <section>
-      <ExpartPlant/>
-     </section>
+      <section>
+        <ExpartPlant />
+      </section>
 
       {/* Feature section */}
-     <section>
-      <OurPlantServices/>
-     </section>
+      <section>
+        <OurPlantServices />
+      </section>
 
       {/* FQA section */}
       <section>
-        <Faq/>
+        <Faq />
       </section>
     </div>
   );
