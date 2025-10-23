@@ -54,7 +54,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/plantdetails/:id",
+    path: "/plantdetails/:plantId",
     element: (
       <PrivetRoutes>
         <PlantDetails></PlantDetails>

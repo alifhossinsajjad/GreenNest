@@ -4,16 +4,18 @@ import PlantsDetailscard from "../Components/PlantsDetailscard";
 
 const PlantDetails = () => {
   const data = useLoaderData();
-  console.log(data);
+  // console.log(data);
   const { plantId } = useParams();
+  // console.log(plantId);
   
 
   const [plants, setPlants] = useState({});
 
 
   useEffect(() => {
-    const allPlantsDetails = data.map((p) => p.id == plantId);
+    const allPlantsDetails = data.find((p) => p.plantId == plantId);
     setPlants(allPlantsDetails);
+    // console.log(allPlantsDetails);
   }, [plantId, data]);
 
 
