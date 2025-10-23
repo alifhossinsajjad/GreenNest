@@ -2,6 +2,7 @@ import { Outlet } from "react-router";
 import Navbar from "../Components/Navbar";
 import Carosul from "../Pages/carosul";
 import Footer from "../Components/Footer";
+import TopRatedPlantsCard from "../Components/TopRatedPlantsCard";
 
 const MianLayout = () => {
   return (

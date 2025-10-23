@@ -10,6 +10,7 @@ import PlantsCategory from "../Pages/PlantsCategory";
 import Register from "../Pages/Register";
 import PrivetRoutes from "../Provider/PrivetRoutes";
 import AllPlants from "../Pages/AllPlants";
+import TopRatedPlants from "../Pages/TopRatedPlants";
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,13 @@ const router = createBrowserRouter([
         Component: AllPlants,
         loader:() => fetch('/Data/Plant.json'),
         hydrateFallbackElement:<Loading/>
-      }
+      },
+      // {
+      //   path:'/topratedplants',
+      //   Component:TopRatedPlants,
+      //   loader:() => fetch('Data/Plant.json'),
+      //   hydrateFallbackElement:<Loading/>
+      // }
     ],
   },
   {

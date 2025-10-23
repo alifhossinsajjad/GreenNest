@@ -6,7 +6,7 @@ const PlantCard = ({ plant }) => {
 
   return (
     <motion.div
-      className="relative rounded-2xl overflow-hidden shadow-lg group hover:shadow-2xl transition-all duration-500 my-30"
+      className="relative rounded-2xl overflow-hidden shadow-lg group hover:shadow-2xl transition-all duration-500 "
       whileHover={{ scale: 1.03 }}
     >
     
