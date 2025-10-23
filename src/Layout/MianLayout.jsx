@@ -1,6 +1,5 @@
 import { Outlet } from "react-router";
 import Navbar from "../Components/Navbar";
-import Carosul from "../Pages/carosul";
 import Footer from "../Components/Footer";
 
 
