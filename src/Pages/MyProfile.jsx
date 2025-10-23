@@ -41,18 +41,18 @@ const MyProfile = () => {
     if (!name || !photoURL) return;
     setUpdating(true);
 
-    updateProfile(user, { displaName: name, photoURL })
+    updateProfile(user, { displayName: name, photoURL: photoURL })
       .then(() => {
         toast.success("Profile updated successfully!");
-        setPreview(photoURL);
-        setName("");
-        setPhotoURL("");
+        setPreview(photoURL); 
       })
       .catch((error) => {
-        console.error(error);
-        toast.error("Failed to update profile: ");
+        console.error("Profile update failed:", error);
+        toast.error("Failed to update profile.");
       })
-      .finally(() => setUpdating(false));
+      .finally(() => {
+        setUpdating(false);
+      });
   };
 
   return (
