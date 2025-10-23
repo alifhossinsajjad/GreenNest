@@ -41,7 +41,7 @@ const MyProfile = () => {
     if (!name || !photoURL) return;
     setUpdating(true);
 
-    updateProfile(user, { displayName: name, photoURL })
+    updateProfile(user, { displaName: name, photoURL })
       .then(() => {
         toast.success("Profile updated successfully!");
         setPreview(photoURL);
@@ -58,11 +58,9 @@ const MyProfile = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-green-50 to-green-200 p-6">
       <div className="relative w-full max-w-5xl bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
-        {/* Decorative top gradient blur */}
         <div className="absolute -top-16 -left-16 w-72 h-72 bg-green-400 rounded-full filter blur-3xl opacity-30"></div>
         <div className="absolute -bottom-16 -right-16 w-72 h-72 bg-green-500 rounded-full filter blur-3xl opacity-30"></div>
 
-        {/* Left Side - Profile Info */}
         <div className="md:w-1/2 bg-gradient-to-br from-green-100 to-green-200 p-12 flex flex-col items-center justify-center gap-5 relative">
           <div className="w-40 h-40 rounded-full overflow-hidden border-8 border-white shadow-xl">
             <img
@@ -82,7 +80,6 @@ const MyProfile = () => {
           </div>
         </div>
 
-        {/* Right Side - Inputs */}
         <div className="md:w-1/2 p-12 flex flex-col justify-between relative">
           <h3 className="text-2xl font-bold text-gray-700 mb-8">
             Update Your Profile

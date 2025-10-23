@@ -4,25 +4,29 @@ import PlantsDetailscard from "../Components/PlantsDetailscard";
 
 const PlantDetails = () => {
   const data = useLoaderData();
-
-  // console.log(data);
-
+  console.log(data);
   const { plantId } = useParams();
-
+  
 
   const [plants, setPlants] = useState({});
 
 
   useEffect(() => {
-    const allPlantsDetails = data.find((p) => p.id == plantId);
+    const allPlantsDetails = data.map((p) => p.id == plantId);
     setPlants(allPlantsDetails);
   }, [plantId, data]);
 
 
 
   return (
-    <div>
-      <PlantsDetailscard plants={plants} />
+   <div>
+      {plants ? (
+        <PlantsDetailscard plants={plants} />
+      ) : (
+        <div className="flex justify-center items-center min-h-screen text-gray-600">
+          Loading Plant Details...
+        </div>
+      )}
     </div>
   );
 };

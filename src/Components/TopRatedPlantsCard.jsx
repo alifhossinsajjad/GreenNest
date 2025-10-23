@@ -31,7 +31,7 @@ const TopRatedPlantsCard = ({ plant }) => {
         <p className="text-xs text-gray-400 italic">Provider: {providerName}</p>
 
      
-        <Link to={`/plantdetails/${plantId}`}  className="text-center inline-block mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-xl font-semibold transition-all duration-300 cursor-pointer">
+        <Link to={`/plantdetails/:${plantId}`}  className="text-center inline-block mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-xl font-semibold transition-all duration-300 cursor-pointer">
           <Link 
           >
             View Details

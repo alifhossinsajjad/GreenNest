@@ -25,7 +25,7 @@ const PlantCard = ({ plant }) => {
         <p className="text-lg font-bold ">Price: ${price}</p>
         <p className="text-lg font-semibold ">Rating: ⭐ {rating} / 5</p>
         <Link
-          to={`/plantdetails/${plantId}`}
+          to={`/plantdetails/:${plantId}`}
           className="inline-block mt-3 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300"
         >
           View Details

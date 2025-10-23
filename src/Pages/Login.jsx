@@ -5,6 +5,7 @@ import { AuthContext } from "../Provider/AuthContext";
 import { FaEyeSlash, FaRegEye } from "react-icons/fa";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../Firebase/Firebase.config";
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   const { logInUser, signInWithGoogle } = use(AuthContext);
@@ -77,7 +78,6 @@ const Login = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-green-50 to-green-100 p-4">
       <div className="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden">
-        {/* Header */}
         <div className="bg-green-500 text-white text-center py-6">
           <h2 className="text-3xl font-extrabold">Login to Your Account</h2>
           <p className="text-green-100 mt-1">
@@ -85,7 +85,6 @@ const Login = () => {
           </p>
         </div>
 
-        {/* Form */}
         <div className="p-8">
           <form onSubmit={hanleLogIn} className="space-y-5">
             {/* Email */}
@@ -130,10 +129,8 @@ const Login = () => {
               </button>
             </div>
 
-            {/* Error */}
             {error && <p className="text-red-600 text-center">{error}</p>}
 
-            {/* Submit */}
             <button
               type="submit"
               className="w-full py-3 bg-green-500 text-white font-semibold rounded-xl shadow-lg hover:bg-green-600 transition-all duration-300"
@@ -142,49 +139,20 @@ const Login = () => {
             </button>
           </form>
 
-          {/* Divider */}
           <div className="flex items-center my-6">
             <hr className="flex-grow border-gray-300" />
             <span className="mx-4 text-gray-500 font-medium">OR</span>
             <hr className="flex-grow border-gray-300" />
           </div>
 
-          {/* Google Login */}
           <button
             onClick={handlegoogleSignIn}
             className="w-full flex items-center justify-center gap-3 py-3 bg-white text-gray-700 border border-gray-300 rounded-xl shadow-sm hover:shadow-md transition-all duration-300"
           >
-            <svg
-              aria-label="Google logo"
-              width="20"
-              height="20"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 512 512"
-            >
-              <g>
-                <path d="m0 0H512V512H0" fill="#fff"></path>
-                <path
-                  fill="#34a853"
-                  d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
-                ></path>
-                <path
-                  fill="#4285f4"
-                  d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
-                ></path>
-                <path
-                  fill="#fbbc02"
-                  d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"
-                ></path>
-                <path
-                  fill="#ea4335"
-                  d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
-                ></path>
-              </g>
-            </svg>
+            <FcGoogle size={35} />
             Login with Google
           </button>
 
-          {/* Register Link */}
           <p className="text-center mt-6 text-gray-600">
             Don’t have an account?{" "}
             <Link

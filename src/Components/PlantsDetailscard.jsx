@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
-const PlantsDetailscard = ({ plants }) => {
+const PlantsDetailscard = ({plants}) => {
   const {
     image,
     plantName,
