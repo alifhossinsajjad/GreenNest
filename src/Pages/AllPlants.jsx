@@ -6,7 +6,7 @@ import { FaArrowLeft } from "react-icons/fa";
 
 const AllPlants = () => {
   const data = useLoaderData();
-  console.log(data);
+  // console.log(data);
 
   const [allPlants, setAllPlants] = useState([]);
 
