@@ -3,13 +3,14 @@ import { AuthContext } from "../Provider/AuthContext";
 import { toast } from "react-toastify";
 import plantLogo from "../assets/plantlogo.png";
 import { Link, NavLink } from "react-router";
-import { IoMdMenu } from "react-icons/io";
+import { IoMdMenu, IoMdClose } from "react-icons/io";
 import { FaSun, FaMoon, FaRegMoon, FaRegSun } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [theme, setTheme] = useState("light");
-  const isDarkMode = theme === "dark"; // Calculate isDarkMode here
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const isDarkMode = theme === "dark";
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -20,12 +21,20 @@ const Navbar = () => {
     if (savedTheme) {
       setTheme(savedTheme);
       document.documentElement.setAttribute("data-theme", savedTheme);
+      // Also add/remove dark class for Tailwind
+      if (savedTheme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
     } else if (systemPrefersDark) {
       setTheme("dark");
       document.documentElement.setAttribute("data-theme", "dark");
+      document.documentElement.classList.add("dark");
     } else {
       setTheme("light");
       document.documentElement.setAttribute("data-theme", "light");
+      document.documentElement.classList.remove("dark");
     }
   }, []);
 
@@ -34,6 +43,14 @@ const Navbar = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
     document.documentElement.setAttribute("data-theme", newTheme);
+    
+    // Add/remove dark class for Tailwind
+    if (newTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    
     localStorage.setItem("theme", newTheme);
   };
 
@@ -59,20 +76,22 @@ const Navbar = () => {
 
   return (
     <nav className="w-full bg-white dark:bg-gray-900 shadow-md sticky top-0 z-50 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center h-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16 md:h-20">
+        {/* Logo */}
         <NavLink
           to="/"
-          className="flex items-center gap-2 font-bold text-2xl text-green-700 dark:text-green-400"
+          className="flex items-center gap-2 font-bold text-xl md:text-2xl text-green-700 dark:text-green-400"
         >
           <img
             src={plantLogo}
             alt="GreenNest Logo"
-            className="w-10 h-10 dark:invert"
+            className="w-8 h-8 md:w-10 md:h-10 dark:invert"
           />
-          GreenNest
+          <span className="hidden sm:inline">GreenNest</span>
         </NavLink>
 
-        <ul className="hidden lg:flex items-center gap-8 font-medium text-gray-700 dark:text-gray-300">
+        {/* Desktop Navigation */}
+        <ul className="hidden lg:flex items-center gap-6 lg:gap-8 font-medium text-gray-700 dark:text-gray-300">
           {navLinks.map((link) => (
             <li key={link.name}>
               <NavLink
@@ -89,22 +108,24 @@ const Navbar = () => {
           ))}
         </ul>
 
-        <div className="flex items-center gap-4 relative">
+        {/* Right Side Actions */}
+        <div className="flex items-center gap-3 md:gap-4">
           {/* Theme Toggle Button */}
           <button
             onClick={toggleTheme}
-            className="p-3 rounded-xl hover:bg-base-300 transition-all duration-200 group"
+            className="p-2 md:p-3 rounded-lg md:rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200"
             aria-label="Toggle theme"
           >
             {theme === "light" ? (
-              <FaRegMoon className="w-5 h-5 text-base-content group-hover:text-primary transition-colors" />
+              <FaRegMoon className="w-5 h-5 md:w-6 md:h-6 text-gray-700 dark:text-gray-300" />
             ) : (
-              <FaRegSun className="w-5 h-5 text-base-content group-hover:text-primary transition-colors" />
+              <FaRegSun className="w-5 h-5 md:w-6 md:h-6 text-gray-700 dark:text-gray-300" />
             )}
           </button>
 
+          {/* User/Auth Section */}
           {user ? (
-            <div className="dropdown dropdown-end">
+            <div className="dropdown dropdown-end hidden md:block">
               <label
                 tabIndex={0}
                 className="cursor-pointer flex items-center gap-2"
@@ -112,15 +133,15 @@ const Navbar = () => {
                 <img
                   src={user.photoURL || ""}
                   alt="User Avatar"
-                  className="w-10 h-10 rounded-full border-2 border-green-500 dark:border-green-400 shadow-sm"
+                  className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-green-500 dark:border-green-400 shadow-sm"
                 />
-                <span className="hidden md:inline font-medium text-gray-700 dark:text-gray-300">
+                <span className="hidden lg:inline font-medium text-gray-700 dark:text-gray-300">
                   {user.displayName || "User"}
                 </span>
               </label>
               <ul
                 tabIndex={0}
-                className="dropdown-content menu p-2 shadow bg-white dark:bg-gray-800 rounded-box w-52 mt-2"
+                className="dropdown-content menu p-2 shadow bg-white dark:bg-gray-800 rounded-box w-48 mt-2"
               >
                 <li>
                   <Link className="hover:bg-green-50 dark:hover:bg-gray-700 dark:text-gray-300">
@@ -138,101 +159,147 @@ const Navbar = () => {
               </ul>
             </div>
           ) : (
-            <div className="flex gap-2">
+            <div className="hidden md:flex gap-2">
               <Link
                 to="/auth/login"
-                className="px-4 py-2 bg-green-500 text-white rounded-lg font-semibold shadow hover:bg-green-600 transition-all dark:bg-green-600 dark:hover:bg-green-700"
+                className="px-3 py-1.5 md:px-4 md:py-2 bg-green-500 text-white text-sm md:text-base font-semibold rounded-lg shadow hover:bg-green-600 transition-all dark:bg-green-600 dark:hover:bg-green-700"
               >
                 Login
               </Link>
               <Link
                 to="/auth/register"
-                className="px-4 py-2 bg-green-100 text-green-700 rounded-lg font-semibold shadow hover:bg-green-200 transition-all dark:bg-green-900 dark:text-green-300 dark:hover:bg-green-800"
+                className="px-3 py-1.5 md:px-4 md:py-2 bg-green-100 text-green-700 text-sm md:text-base font-semibold rounded-lg shadow hover:bg-green-200 transition-all dark:bg-green-900 dark:text-green-300 dark:hover:bg-green-800"
               >
                 Register
               </Link>
             </div>
           )}
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? (
+              <IoMdClose className="w-6 h-6" />
+            ) : (
+              <IoMdMenu className="w-6 h-6" />
+            )}
+          </button>
         </div>
 
-        <div className="lg:hidden dropdown dropdown-end">
-          <label
-            tabIndex={0}
-            className="btn btn-ghost btn-circle dark:text-white"
-          >
-            <IoMdMenu size={70} />
-          </label>
-          <ul
-            tabIndex={0}
-            className="menu dropdown-content bg-white dark:bg-gray-800 shadow p-4 rounded-box w-52 mt-4 flex flex-col gap-2"
-          >
-            {/* Theme toggle in mobile menu */}
-            <li className="flex justify-between items-center px-2 py-1">
-              <span className="text-gray-700 dark:text-gray-300">Theme</span>
-              <button
-                onClick={toggleTheme}
-                className="p-2 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300"
-                aria-label="Toggle theme"
-              >
-                {isDarkMode ? ( // Now using isDarkMode which is defined
-                  <FaSun className="w-4 h-4" />
-                ) : (
-                  <FaMoon className="w-4 h-4" />
-                )}
-              </button>
-            </li>
+        {/* Mobile Menu Overlay */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden fixed inset-0 z-40 bg-black bg-opacity-50" onClick={() => setIsMobileMenuOpen(false)} />
+        )}
 
-            {navLinks.map((link) => (
-              <li key={link.name}>
-                <NavLink
-                  to={link.to}
-                  className={({ isActive }) =>
-                    isActive
-                      ? "text-green-600 dark:text-green-400 font-semibold"
-                      : "text-gray-700 dark:text-gray-300 hover:text-green-500 dark:hover:text-green-300"
-                  }
-                >
-                  {link.name}
-                </NavLink>
-              </li>
-            ))}
-            {user ? (
-              <>
-                <li>
-                  <span className="text-gray-700 dark:text-gray-300 px-2">
-                    {user.displayName}
-                  </span>
-                </li>
-                <li>
-                  <button
-                    onClick={handleLogOut}
-                    className="text-red-600 dark:text-red-400 font-semibold hover:bg-red-50 dark:hover:bg-red-900 w-full text-left px-2 py-1 rounded"
-                  >
-                    Logout
-                  </button>
-                </li>
-              </>
-            ) : (
-              <>
-                <li>
-                  <Link
-                    to="/auth/login"
-                    className="text-green-600 dark:text-green-400 font-semibold hover:bg-green-50 dark:hover:bg-gray-700 w-full block px-2 py-1 rounded"
-                  >
-                    Login
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/auth/register"
-                    className="text-green-700 dark:text-green-300 font-semibold hover:bg-green-100 dark:hover:bg-green-900 w-full block px-2 py-1 rounded"
-                  >
-                    Register
-                  </Link>
-                </li>
-              </>
+        {/* Mobile Menu */}
+        <div
+          className={`lg:hidden fixed top-16 right-0 w-64 h-[calc(100vh-4rem)] bg-white dark:bg-gray-900 shadow-xl transform transition-transform duration-300 ease-in-out z-50 ${
+            isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          <div className="p-4 h-full overflow-y-auto">
+            {/* User Info in Mobile Menu */}
+            {user && (
+              <div className="flex items-center gap-3 mb-6 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                <img
+                  src={user.photoURL || ""}
+                  alt="User Avatar"
+                  className="w-10 h-10 rounded-full border-2 border-green-500 dark:border-green-400"
+                />
+                <div>
+                  <p className="font-semibold text-gray-900 dark:text-gray-100">
+                    {user.displayName || "User"}
+                  </p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    {user.email}
+                  </p>
+                </div>
+              </div>
             )}
-          </ul>
+
+            {/* Mobile Navigation Links */}
+            <ul className="space-y-1 mb-6">
+              {navLinks.map((link) => (
+                <li key={link.name}>
+                  <NavLink
+                    to={link.to}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={({ isActive }) =>
+                      `flex items-center px-4 py-3 rounded-lg transition-all ${
+                        isActive
+                          ? "bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 font-semibold"
+                          : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                      }`
+                    }
+                  >
+                    {link.name}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+
+            {/* Theme Toggle in Mobile Menu */}
+            <div className="mb-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+              <div className="flex items-center justify-between mb-2">
+                <span className="font-medium text-gray-900 dark:text-gray-100">
+                  Theme
+                </span>
+                <button
+                  onClick={toggleTheme}
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600 transition-all"
+                  aria-label="Toggle theme"
+                >
+                  {isDarkMode ? (
+                    <>
+                      <FaSun className="w-4 h-4" />
+                      <span className="text-sm">Light</span>
+                    </>
+                  ) : (
+                    <>
+                      <FaMoon className="w-4 h-4" />
+                      <span className="text-sm">Dark</span>
+                    </>
+                  )}
+                </button>
+              </div>
+              <p className="text-xs text-gray-600 dark:text-gray-400">
+                Current: {isDarkMode ? "Dark Mode" : "Light Mode"}
+              </p>
+            </div>
+
+            {/* Auth Buttons in Mobile Menu */}
+            {!user ? (
+              <div className="space-y-3">
+                <Link
+                  to="/auth/login"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-center px-4 py-3 bg-green-500 text-white font-semibold rounded-lg shadow hover:bg-green-600 transition-all dark:bg-green-600 dark:hover:bg-green-700"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/auth/register"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block w-full text-center px-4 py-3 bg-green-100 text-green-700 font-semibold rounded-lg shadow hover:bg-green-200 transition-all dark:bg-green-900 dark:text-green-300 dark:hover:bg-green-800"
+                >
+                  Register
+                </Link>
+              </div>
+            ) : (
+              <button
+                onClick={() => {
+                  handleLogOut();
+                  setIsMobileMenuOpen(false);
+                }}
+                className="w-full px-4 py-3 bg-red-50 dark:bg-red-900 text-red-600 dark:text-red-400 font-semibold rounded-lg hover:bg-red-100 dark:hover:bg-red-800 transition-all"
+              >
+                Logout
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </nav>
