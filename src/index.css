@@ -16,6 +16,30 @@
   --gradient-to: #A78BFA;
 }
 
+
+
+/* Smooth slide transitions */
+.slide-in-right {
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Prevent body scroll when mobile menu is open */
+body.menu-open {
+  overflow: hidden;
+}
+
 /* Smooth theme transition */
 * {
   transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
