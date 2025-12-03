@@ -7,7 +7,6 @@ const TopRatedPlants = () => {
   const [topRatedPlants, setTopRatedPlants] = useState([]);
 
   useEffect(() => {
-    // filter only plants with high rating (you can change the number)
     const filtered = data.filter((plant) => plant.rating >= 4.8);
     setTopRatedPlants(filtered);
   }, [data]);

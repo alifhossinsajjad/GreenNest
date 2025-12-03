@@ -13,6 +13,10 @@ import AllPlants from "../Pages/AllPlants";
 import TopRatedPlants from "../Pages/TopRatedPlants";
 import SearchResults from "../Pages/SearchResults";
 
+import BlogTips from "../Pages/BlogTips";
+import Services from "../Pages/Services";
+import ContactUs from "../Pages/ContactUs";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -58,6 +62,18 @@ const router = createBrowserRouter([
       //   loader:() => fetch('Data/Plant.json'),
       //   hydrateFallbackElement:<Loading/>
       // }
+      {
+        path :'/services',
+      Component : Services
+      },
+      {
+        path : '/blog-tips',
+       Component : BlogTips
+      },
+      {
+        path : '/contact',
+       Component : ContactUs
+      },
     ],
   },
   {
@@ -65,7 +81,6 @@ const router = createBrowserRouter([
     element: <PlantDetails></PlantDetails>,
     loader: () => fetch("/Data/Plant.json"),
   },
-
   {
     path: "/*",
     Component: Error,

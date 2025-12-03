@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router";
+import Footer from "./Footer";
 
 const PlantsDetailscard = ({ plants }) => {
   const navigate = useNavigate();
@@ -13,7 +14,6 @@ const PlantsDetailscard = ({ plants }) => {
     availableStock,
     careLevel,
     description,
-    providerName,
     category,
     plantId,
   } = plants;
@@ -1006,6 +1006,7 @@ const handleSearch = (e) => {
             </div>
           </div>
         </div>
+        <Footer/>
       </div>
     </>
   );

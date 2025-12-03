@@ -1,4 +1,5 @@
 import React from "react";
+import Logo from '../assets/plantlogo.png'
 import {
   FaFacebook,
   FaInstagram,
@@ -14,9 +15,12 @@ const Footer = () => {
         {/* Logo Section */}
         <div>
           <div className="mb-4">
-            <h2 className="text-2xl font-bold text-green-700">
+            <div className="flex items-center">
+              <img src={Logo} alt="" className="w-10" />
+              <h2 className="text-2xl font-bold text-green-700">
               <span className="text-emerald-600">Green</span>Nest
             </h2>
+            </div>
             <p className="text-sm text-gray-600 mt-1">
               Bringing nature to your doorstep
             </p>
@@ -58,20 +62,13 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                to="/blog"
+                to="/blog-tips"
                 className="hover:text-green-600 transition cursor-pointer"
               >
                 Blog & Tips
               </Link>
             </li>
-            <li>
-              <Link
-                to="/dashboard"
-                className="hover:text-green-600 transition cursor-pointer"
-              >
-                Dashboard
-              </Link>
-            </li>
+           
           </ul>
         </div>
 
@@ -83,7 +80,7 @@ const Footer = () => {
           <ul className="space-y-2">
             <li>
               <Link
-                to="/services/indoor-plants"
+                to=""
                 className="hover:text-green-600 transition cursor-pointer"
               >
                 Indoor Plant Sales
@@ -91,7 +88,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                to="/services/plant-care"
+                to=""
                 className="hover:text-green-600 transition cursor-pointer"
               >
                 Plant Care Consultation
@@ -99,7 +96,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                to="/services/eco-decor"
+                to=""
                 className="hover:text-green-600 transition cursor-pointer"
               >
                 Eco Decor Ideas
@@ -107,7 +104,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                to="/services/maintenance"
+                to=""
                 className="hover:text-green-600 transition cursor-pointer"
               >
                 Plant Maintenance Support
@@ -115,7 +112,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                to="/services/delivery"
+                to=""
                 className="hover:text-green-600 transition cursor-pointer"
               >
                 Plant Delivery Service
@@ -133,7 +130,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <Link
-                  to="/about"
+                  to=""
                   className="hover:text-green-600 transition cursor-pointer"
                 >
                   About Us
@@ -149,7 +146,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/privacy-policy"
+                  to="/"
                   className="hover:text-green-600 transition cursor-pointer"
                 >
                   Privacy Policy
@@ -157,7 +154,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/terms"
+                  to="/"
                   className="hover:text-green-600 transition cursor-pointer"
                 >
                   Terms & Conditions
@@ -165,7 +162,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/faq"
+                  to="/"
                   className="hover:text-green-600 transition cursor-pointer"
                 >
                   FAQ
@@ -229,7 +226,7 @@ const Footer = () => {
           </div>
           <div>
             <p className="text-sm font-medium text-green-700">Phone</p>
-            <p className="text-sm text-gray-600">+1 (555) 123-4567</p>
+            <p className="text-sm text-gray-600">+88 01824557339</p>
           </div>
           <div>
             <p className="text-sm font-medium text-green-700">Address</p>

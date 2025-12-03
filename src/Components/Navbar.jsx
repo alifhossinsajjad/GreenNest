@@ -23,6 +23,9 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", to: "/" },
     { name: "Plants", to: "/allplants" },
+    { name: "Our Services", to: "/services" },
+    { name: "Blog & Tips", to: "/blog-tips" },
+    { name: "Contact us", to: "/contact" },
     { name: "My Profile", to: "/myprofile" },
   ];
 
