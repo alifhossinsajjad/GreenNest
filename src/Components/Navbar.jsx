@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 
-
 import { AuthContext } from "../Provider/AuthContext";
 import { toast } from "react-toastify";
 import plantLogo from "../assets/plantlogo.png";
@@ -30,8 +29,10 @@ const Navbar = () => {
   return (
     <nav className="w-full bg-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center h-20">
-        
-        <NavLink to="/" className="flex items-center gap-2 font-bold text-2xl text-green-700">
+        <NavLink
+          to="/"
+          className="flex items-center gap-2 font-bold text-2xl text-green-700"
+        >
           <img src={plantLogo} alt="GreenNest Logo" className="w-10 h-10" />
           GreenNest
         </NavLink>
@@ -56,7 +57,10 @@ const Navbar = () => {
         <div className="flex items-center gap-4 relative">
           {user ? (
             <div className="dropdown dropdown-end">
-              <label tabIndex={0} className="cursor-pointer flex items-center gap-2">
+              <label
+                tabIndex={0}
+                className="cursor-pointer flex items-center gap-2"
+              >
                 <img
                   src={user.photoURL || ""}
                   alt="User Avatar"
@@ -101,10 +105,9 @@ const Navbar = () => {
           )}
         </div>
 
-     
         <div className="lg:hidden dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle">
-            <IoMdMenu size={70}/>
+            <IoMdMenu size={70} />
           </label>
           <ul
             tabIndex={0}

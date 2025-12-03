@@ -11,6 +11,7 @@ import Register from "../Pages/Register";
 import PrivetRoutes from "../Provider/PrivetRoutes";
 import AllPlants from "../Pages/AllPlants";
 import TopRatedPlants from "../Pages/TopRatedPlants";
+import SearchResults from "../Pages/SearchResults";
 
 const router = createBrowserRouter([
   {
@@ -40,10 +41,16 @@ const router = createBrowserRouter([
         Component: Register,
       },
       {
-        path:'/allplants',
+        path: "/allplants",
         Component: AllPlants,
-        loader:() => fetch('/Data/Plant.json'),
-        hydrateFallbackElement:<Loading/>
+        loader: () => fetch("/Data/Plant.json"),
+        hydrateFallbackElement: <Loading />,
+      },
+      {
+        path: "/search",
+        Component: SearchResults,
+        loader: () => fetch("/Data/Plant.json"),
+        hydrateFallbackElement: <Loading />,
       },
       // {
       //   path:'/topratedplants',
@@ -55,13 +62,8 @@ const router = createBrowserRouter([
   },
   {
     path: "/plantdetails/:plantId",
-    element: (
-      <PrivetRoutes>
-        <PlantDetails></PlantDetails>
-      </PrivetRoutes>
-    ),
+    element: <PlantDetails></PlantDetails>,
     loader: () => fetch("/Data/Plant.json"),
-
   },
 
   {

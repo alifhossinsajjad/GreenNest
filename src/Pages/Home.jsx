@@ -11,11 +11,10 @@ import ExpartPlant from "../Components/ExpartPlant";
 import OurPlantServices from "../Components/OurPlantServices";
 import Faq from "../Components/Faq";
 
-
 const Home = () => {
   const plants = useLoaderData();
 
-  const topRatedPlants = plants.filter((plant) => plant.rating > 4.6);
+  const topRatedPlants = plants.filter((plant) => plant.rating > 4.7);
 
   return (
     <div className="space-y-16">
